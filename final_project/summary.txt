@@ -1,0 +1,12 @@
+Number of users collected: 1306
+Collected a total of 610 tweets
+Number of communities discovered: 2
+Number of users per community: 
+	In community 1: 795 users
+	In community 2: 511 users
+Using a fined-tune Multinomial Naive Bayes on 122 test tweets:
+	Accuracy on test set: 0.8360655737704918
+	Number of instances for class 0: 52
+	Number of instances for class 1: 70
+	Example of class 1: Unfinished 'Doctor Who' Episode By Douglas Adams Will Finally Be Completed, 38 Years Later https://t.co/5x0YWMWiK6 https://t.co/hhjHzQvRMc
+	Example of class 0: 2) Trump gets away with it since GOP Congress is filled with shameless enablers who let him humiliate them regularly. Don't trust him, Dems.

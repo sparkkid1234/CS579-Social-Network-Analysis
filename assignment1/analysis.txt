@@ -1,0 +1,69 @@
+Enter your responses inline below and push this file to your private GitHub
+repository.
+
+
+1. Assume I plan to use the friend_overlap function above to quantify the
+similarity of two users. E.g., because 344 is larger than 1, I conclude that
+Jill Stein and Gary Johnson are more similar than Hillary Clinton and Donald
+Trump.
+
+How is this approach misleading? How might you fix it?
+
+This approach is misleading because:
+1. who and how people follow depends entirely on their characteristics. Person A and B can be extremely similar in terms of sports they play, hobbies, jobs, etc... However, because person B
+doesn't want to follow too many people (for some reason), he/she only chooses to follow 30 people on twitter. If we use friend_overlap, the similarity score we get will be at most 30
+=> Does not represent how extremely similar person A and B are
+2. The larger the amount of people/things they follow, the higher the overlap. Person C and D can be very dissimilar, and only similar in that they both like soccer. If both people follow 
+a lot of soccer player and soccer news page and channels, it's very likely that they might have, for example, a friend_overlap score of 40
+=> Friend_overlap score rates person C and D to be more similar than A and B => misleading
+
+To fix this problem, we can devise a more complex similarity score that takes into account both problems above
+
+
+
+
+
+2. Looking at the output of your followed_by_hillary_and_donald function, why
+do you think this user is followed by both Hilary Clinton and Donald Trump,
+who are rivals? Do some web searches to see if you can find out more
+information.
+
+A possible scenerio can be the following:
+Hillary Clinton has been involved with politics for quite a long time => she might have followed the whitehouse even before she decided to run for presidents. Donald Trump follows the
+whitehouse possibly because, before running for president, his business tied itself significantly to politics. Thus, he might follow the whitehouse to get updates on politics in the country.
+
+=> The fact that they follow the same page, doesn't show anything about their rivalry since the reasons can be unrelated
+
+
+
+
+
+
+3. There is a big difference in how many accounts each candidate follows (Gary
+Johnson follows over 3K accounts, while Donald Trump follows less than
+50). Why do you think this is? How might that affect our analysis?
+
+This really depends on the person's characteristics and the team that manages their accounts. From his following, Trump proved to be conservative. 
+He only follows his business ventures and partners, one or two person representing the sport he like (golf for example), etc... 
+He really tries to keep his following list as clean and centered as possible. On the contrary, Gary Johnson seems to be a very sociable and friendly guy, 
+as can be told from the number of people he follows.
+
+How this might affect our analysis depends on the type of analysis we are doing. But overall, if number of accounts a candidate follows is an attribute,
+then this creates a very large gap in value between each candidate. Thus we would have to normalize this attribute so values all have the same range
+
+
+
+
+
+4. The follower graph we've collected is incomplete. To expand it, we would
+have to also collect the list of accounts followed by each of the
+friends. That is, for each user X that Donald Trump follows, we would have to
+also collect all the users that X follows. Assuming we again use the API call
+https://dev.twitter.com/rest/reference/get/friends/ids, how many requests will
+we have to make? Given how Twitter does rate limiting
+(https://dev.twitter.com/rest/public/rate-limiting), approximately how many
+minutes will it take to collect this data?
+
+Assume we already have Trump's friend list. Currently Trump's following 45 people => we would need 45 requests to perform our task. The rate limit is 15 requests per 15 minutes window
+Assume we make our request continuously, and that each request takes less than 1 minute
+=> It will take approximately 15 + 15 + time it takes to do 45 request = 35 minutes to get all data 

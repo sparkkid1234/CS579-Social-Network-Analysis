@@ -1,0 +1,46 @@
+A. Overall, the goal of my codes is to analyse the social structure of film critics as well 
+as comparing how different a male film critic would tweet vs a female.
+Due to twitter rate limit and running time, I only take 4 film critics for my analysis.
+
+B. Conclusions:
+
+1. Social structure: 
+
+- Although all 4 users follow and are followed by alot of users, only very small percentage 
+was actually a bi-direction (friend) relationship, that is the user A follows B and B follows
+ A back. The amount of bi-direction relationship is a bit surprising. This may indicate 
+that all 4 are quite conservative in their "friend" relationship on Twitter
+
+- The only indication I can get from my clusters is that user Nikki, slashfilm and ErikDavis
+probably have something in common (their style of writing etc..), thus the people they follow 
+and who follow them are quite similar. Or it could just be a biased sampling since I could
+only get 5000 followers for each users, when in fact their number of followers were much greater
+- What's interesting was the norm cut value for a very balanced cut using eigenvectors is larger
+than the extremely unbalanced cut produced by kmeans
+
+2. Classification: I classify gender based on tweets (retweet filtered out) FROM these 4 users
+
+- There are two problems with my classification code:
++ My data size is too small (approx 700 tweets)
++ My tweets got truncated if they are over 140 char. For this I found a solution since 
+twitter updated its tweet object to include full tweet. Unfortunately, I think twitterapi 
+has not been updated to include the new tweet object, so my tweets remain truncated
+
+- Despite the above, I still get a pretty good result on train and test set using a fine-tuned
+Multinomial Naive Bayes. Overall accuracy on test set range from 80-90%
+
+<!!!!!>NOTE: since I use stratified sampling to sample my train/test set, the result of each
+run (including top words etc...) will be a little bit different. The conclusions below
+are made after several (about 10-20) runs
+
++ I find that if lexicon feature is omitted, accuracy improves a lot. This may be because
+1. the negative and positive lexicon is limited, or 2. film critics don't often express
+themselves too much as they try to remain neutral
+
++ Female critics generally use words about beauty, politics involving woman (several runs 
+and a look at example tweets confirms this), feminism and misogynism. They are generally 
+more negative in their tweets, but their word choices are more diverse than the male critics
+
++ Male critics are generally more positive. Based on the words most used, they talk more on
+movies and the act of going to see movies, especially superhero movie (like justice league)
+
